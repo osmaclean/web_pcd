@@ -20,3 +20,16 @@
 
 
 })();
+
+
+
+// Criação da session Vagas
+
+(function () {
+    const body = document.body
+    const section = document.createElement('section')
+
+
+    body.appendChild(section)
+
+})()
