@@ -87,3 +87,16 @@ main button {
     letter-spacing: 1px;
 
 }
+
+
+section {
+    background-color: #5c940d;
+    height: 75vh;
+    padding: 10px;
+}
+
+section #box {
+    background-color: #dee2e6;
+    border-radius: 5px;
+    height: 50vh;
+}
