@@ -90,13 +90,29 @@ main button {
 
 
 section {
-    background-color: #5c940d;
+    background-color: var(--color-primary-2);
     height: 75vh;
     padding: 10px;
+    gap: 20px;
+}
+
+section h1 {
+    color: var(--color-grey-6);
+    margin: 20px 0px;
+    font-weight: 900;
+    font-size: var(--title-3);
 }
 
 section #box {
     background-color: #dee2e6;
     border-radius: 5px;
     height: 50vh;
+}
+
+section div {
+    padding: 20px;
+    width: 95%;
+    height: auto;
+    margin-bottom: 30px;
+    background-color: aqua;
 }

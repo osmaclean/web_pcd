@@ -18,76 +18,107 @@
     main__span.innerText = "Confere aqui embaixo o que temos para você!";
     main__button.innerText = "ESPIAR OPORTUNIDADES";
 
+    main__button.addEventListener('click', () => {
+
+        window.scroll({ top: 500, behavior: "smooth" })
+
+
+    })
 
 })();
-  
+
 
 // Criação da session Vagas
 
-(function (objeto) {
+(function () {
 
 
     const body = document.body;
     const section = document.createElement('section');
     const section__h1 = document.createElement('h1');
-    const section__div = document.createElement('div');
-    const section__div__h1 = document.createElement('h1');
-    const section__div__div = document.createElement('div');
-    const section__div__div__h4 = document.createElement('h4');
-    const section__div__div__h4_2 = document.createElement('h4');
-    const section__div__p = document.createElement('p');
-    const section__div__div__2 = document.createElement('div');
-    const section__div__button = document.createElement('button');
-    
 
 
-    body.appendChild(section).append(section__h1, section__div);
-    section__div.append(section__div__h1, section__div__div, section__div__p, section__div__div__2, section__div__button);
-    section__div__div.append(section__div__div__h4, section__div__div__h4_2);
-
-    section__div.setAttribute("id", "box");
-    
+    body.appendChild(section).appendChild(section__h1);
 
     section__h1.innerText = 'Vagas';
-    section__div__h1.innerText = objeto.titulo;
+
 
     // Renderização dos Dados do Array de Objetos em Tela
 
     const jobsData = [
         {
-          id: 0,
-          titulo: "Desenvolvedor(a) back-end - Python",
-          empresa: "DNC",
-          localizacao: "Fortaleza",
-          descricao:
-            "Gerar um guia de implementação em FHIR a partir desse modelo lógico e construir um repositório FHIR que receba esses dados e se mantenha em conformidade com a especificação que será produzida",
-          modo: ["Remote", "Hybrid"],
+            id: 0,
+            titulo: "Desenvolvedor(a) back-end - Python",
+            empresa: "DNC",
+            localizacao: "Fortaleza",
+            descricao:
+                "Gerar um guia de implementação em FHIR a partir desse modelo lógico e construir um repositório FHIR que receba esses dados e se mantenha em conformidade com a especificação que será produzida",
+            modo: ["Remote", "Hybrid"],
         },
         {
-          id: 1,
-          titulo: "Desenvolvedor(a) FullStack - Node.js",
-          empresa: "Escola DNC",
-          localizacao: "São Paulo",
-          descricao:
-            "Esta é uma oportunidade de trabalho totalmente remoto em tempo integral, na qual você trabalhará como parte de uma equipe Scrum, que exige trabalhar em estreita colaboração com outros engenheiros de software, partes interessadas e colaboradores do projeto.",
-          modo: ["Remote", "Presencial"],
+            id: 1,
+            titulo: "Desenvolvedor(a) FullStack - Node.js",
+            empresa: "Escola DNC",
+            localizacao: "São Paulo",
+            descricao:
+                "Esta é uma oportunidade de trabalho totalmente remoto em tempo integral, na qual você trabalhará como parte de uma equipe Scrum, que exige trabalhar em estreita colaboração com outros engenheiros de software, partes interessadas e colaboradores do projeto.",
+            modo: ["Presencial", "Remote" ],
         },
         {
-          id: 2,
-          titulo: "Desenvolvedor Front-end Jr. - React.js | Tailwind",
-          empresa: "Imperium Tech",
-          localizacao: "Mato Grosso",
-          descricao:
-            "Você já é um profissional junior ou pleno no desenvolvimento em React, dificilmente fica trancado para escopos simples, escreve testes automatizados, faz pushes diários e sabe balancear avanço com a refatoração do código.",
-          modo: ["Remote", "Hybrid"],
+            id: 2,
+            titulo: "Desenvolvedor Front-end Jr. - React.js | Tailwind",
+            empresa: "Imperium Tech",
+            localizacao: "Mato Grosso",
+            descricao:
+                "Você já é um profissional junior ou pleno no desenvolvimento em React, dificilmente fica trancado para escopos simples, escreve testes automatizados, faz pushes diários e sabe balancear avanço com a refatoração do código.",
+            modo: ["Hybrid", "Remote"],
         },
-      ];
+    ];
 
 
-      jobsData.forEach((objeto) => {
+    
+    let contId = 0;
 
-        section__div__h1.innerHTML = objeto.empresa
+    function criarVagas(vagas) {
 
-      });
+        vagas.forEach((vagaAtual) => {
+            const sectionCriada = document.querySelector('section');
+            const section__div = document.createElement('div');
+            const section__div__h1 = document.createElement('h1');
+            const section__div__div = document.createElement('div');
+            const section__div__div__h4 = document.createElement('h4');
+            const section__div__div__h4_2 = document.createElement('h4');
+            const section__div__p = document.createElement('p');
+            const section__div__div__2 = document.createElement('div');
+            const section__div__button = document.createElement('button');
+
+            sectionCriada.appendChild(section__div)
+            section__div.append(section__div__h1, section__div__div, section__div__p, section__div__div__2, section__div__button);
+            section__div__div.append(section__div__div__h4, section__div__div__h4_2);
+
+            section__div__h1.innerText = vagaAtual.titulo;
+            section__div__div__h4.innerText = vagaAtual.empresa;
+            section__div__div__h4_2.innerText = vagaAtual.localizacao;
+            section__div__p.innerText = vagaAtual.descricao;
+            section__div__div__2.innerText = vagaAtual.modo[0];
+            section__div__button.innerText = 'Candidatar';
+            section__div__button.id = `id_${contId}`;
+
+            contId++;
+
+
+
+
+
+        });
+    }
+
+    criarVagas(jobsData)
+
+    //   jobsData.forEach((objeto) => {
+
+    //     section__div__h1.innerHTML = objeto.empresa
+
+    //   });
 
 })();
