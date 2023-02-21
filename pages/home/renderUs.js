@@ -28,7 +28,7 @@
 })();
 
 
-// Criação da session Vagas
+// Criação da session Vagas sem poluir o escopo global
 
 (function () {
 
@@ -43,13 +43,13 @@
     section__h1.innerText = 'Vagas';
 
 
-    // Renderização dos Dados do Array de Objetos em Tela
+    // Array de Objetos para ser renderizado em tela
 
     const jobsData = [
         {
             id: 0,
-            titulo: "Desenvolvedor(a) back-end - Python",
-            empresa: "DNC",
+            titulo: "Desenvolvedor(a) Back-end - Python",
+            empresa: "DNC S/A",
             localizacao: "Fortaleza",
             descricao:
                 "Gerar um guia de implementação em FHIR a partir desse modelo lógico e construir um repositório FHIR que receba esses dados e se mantenha em conformidade com a especificação que será produzida",
@@ -62,12 +62,12 @@
             localizacao: "São Paulo",
             descricao:
                 "Esta é uma oportunidade de trabalho totalmente remoto em tempo integral, na qual você trabalhará como parte de uma equipe Scrum, que exige trabalhar em estreita colaboração com outros engenheiros de software, partes interessadas e colaboradores do projeto.",
-            modo: ["Presencial", "Remote" ],
+            modo: ["Presencial", "Remote"],
         },
         {
             id: 2,
             titulo: "Desenvolvedor Front-end Jr. - React.js | Tailwind",
-            empresa: "Imperium Tech",
+            empresa: "Tech LTDA",
             localizacao: "Mato Grosso",
             descricao:
                 "Você já é um profissional junior ou pleno no desenvolvimento em React, dificilmente fica trancado para escopos simples, escreve testes automatizados, faz pushes diários e sabe balancear avanço com a refatoração do código.",
@@ -75,13 +75,12 @@
         },
     ];
 
-
-    
     let contId = 0;
 
     function criarVagas(vagas) {
 
         vagas.forEach((vagaAtual) => {
+            const body = document.body;
             const sectionCriada = document.querySelector('section');
             const section__div = document.createElement('div');
             const section__div__h1 = document.createElement('h1');
@@ -91,6 +90,9 @@
             const section__div__p = document.createElement('p');
             const section__div__div__2 = document.createElement('div');
             const section__div__button = document.createElement('button');
+
+            section__div__div.setAttribute("id", "divloc");
+            section__div__div__2.setAttribute("id", "segundaDiv");
 
             sectionCriada.appendChild(section__div)
             section__div.append(section__div__h1, section__div__div, section__div__p, section__div__div__2, section__div__button);
@@ -106,19 +108,39 @@
 
             contId++;
 
-
-
-
-
+            section__div__button.addEventListener('click', () => {
+                if (section__div__button.innerText === 'Candidatar') {
+                    section__div__button.innerText = 'Remover Candidatura'
+                }
+            });
         });
     }
 
     criarVagas(jobsData)
 
-    //   jobsData.forEach((objeto) => {
+    const aside = document.createElement('aside');
+    const aside__h1 = document.createElement('h1');
+    const aside__p = document.createElement('p');
 
-    //     section__div__h1.innerHTML = objeto.empresa
 
-    //   });
+    section.appendChild(aside).append(aside__h1, aside__p)
+
+    aside__h1.innerText = 'Vagas Selecionadas'
+    aside__p.innerText = 'Você ainda não aplicou para nenhuma vaga'
+
+
+    // Função para procurar o ID
+
+    function searchingId(id) {
+
+        for (let i = 0; i < jobsData.length; i++) {
+
+            let box = jobsData[i]
+            if (jobsData[i].id == id) {
+                return jobsData[i]
+            }
+        }
+    }
+
 
 })();
