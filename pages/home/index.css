@@ -194,3 +194,11 @@ section aside h1 {
     color: var(--color-primary-1);
     font-size: 20px;
 }
+
+
+.text-job {
+
+    padding-bottom: 30px;
+    line-height: 32px;
+
+}

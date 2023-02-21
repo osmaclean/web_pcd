@@ -76,6 +76,9 @@
     ];
 
     let contId = 0;
+    let more = 0;
+
+    // Função que renderiza as vagas + evento no botão
 
     function criarVagas(vagas) {
 
@@ -108,25 +111,113 @@
 
             contId++;
 
+            // Evento de adicionar as vagas
+            section__div__button.addEventListener('click', (button) => {
+                
+                let event = button.target;
+                let eventId = event.id;
+
+                let searchProduct = searchingId(eventId);
+                
+                more++
+
+                renderAside(searchProduct);
+
+                let select = document.querySelector("#removeCard")
+
+                select.remove()
+
+                localStorage.setItem('CartJob', jobsData)
+            })
+            
             section__div__button.addEventListener('click', () => {
                 if (section__div__button.innerText === 'Candidatar') {
                     section__div__button.innerText = 'Remover Candidatura'
                 }
             });
+
         });
     }
 
     criarVagas(jobsData)
 
+
+
+
+    // Criação do Aside
     const aside = document.createElement('aside');
     const aside__h1 = document.createElement('h1');
+    const aside__ul = document.createElement('ul')
     const aside__p = document.createElement('p');
 
 
-    section.appendChild(aside).append(aside__h1, aside__p)
+    section.appendChild(aside).append(aside__h1, aside__ul)
+    aside__ul.appendChild(aside__p)
+    aside__ul.setAttribute('class', 'test')
+    aside__p.setAttribute('id', 'removeCard')
+    aside__p.setAttribute('class', 'text-job removerCard')
 
     aside__h1.innerText = 'Vagas Selecionadas'
     aside__p.innerText = 'Você ainda não aplicou para nenhuma vaga'
+
+    // Função que renderiza as vagas no aside
+    function renderAside(objeto) {
+
+        let produtosAside = document.querySelector('.test');
+
+        let li = document.createElement('li');
+        li.classList.add('aside__li');
+
+        let title = document.createElement('h2');
+        title.setAttribute('class', 'nameJob');
+
+        let asideCompanyLocation = document.createElement('div');
+        asideCompanyLocation.classList.add('asideCompanyLocation');
+
+        let enterprise = document.createElement('p')
+        enterprise.setAttribute('class', 'asideCompany');
+
+        let location = document.createElement('p')
+        location.classList.add('asideLocation')
+
+        let description = document.createElement('p');
+        description.setAttribute('class', 'asideText');
+
+        let asideTypeButton = document.createElement('div');
+        asideTypeButton.classList.add('asideTypeButton');
+
+        let modos = document.createElement('span');
+        modos.setAttribute('class', 'asideSpan');
+
+        let asideButton = document.createElement('button')
+        asideButton.setAttribute('class', 'asideButton');
+
+        li.id = objeto.id;
+        title.innerText = objeto.titulo;
+        enterprise.innerText = objeto.empresa;
+        location.innerText = objeto.localizacao;
+        description.innerText = objeto.descricao;
+        asideButton.innerText = 'Remover';
+        modos.innerText = objeto.modo[0]
+
+        li.append(title, enterprise, location, description, modos, asideButton);
+
+        asideButton.addEventListener('click', function (e) {
+
+            more--
+
+            li.remove()
+        });
+
+        produtosAside.append(li)
+
+
+
+    }
+
+
+
+
 
 
     // Função para procurar o ID
