@@ -247,7 +247,12 @@ section aside ul li.aside__li {
     display: flex;
 }
 
-section aside ul li div.asideTypeButton
+section aside ul li div.asideTypeButton {
+
+    display: flex;
+    gap: 10px;
+    width:80%;
+}
 
 section aside ul li h2.nameJob {
     font-size: 15px;

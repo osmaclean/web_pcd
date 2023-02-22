@@ -198,17 +198,21 @@ function renderVacancies(arr) {
     const ulSectionAside = document.querySelector('.test');
     ulSectionAside.innerHTML = '';
 
-    const pAside = document.querySelector('#removeCard')
-    pAside.innerHTML = '';
+    const funcaoMessage = emptyMessage()
 
-    arr.forEach(vaga => {
-        const funcao = createAsideElement(vaga)
+    if (vagasAplicadas.length <= 0){
 
-        ulSectionAside.append(funcao);
-    });
+        ulSectionAside.append(funcaoMessage)
 
-    removeButton()
-
+    } else {
+        arr.forEach(vaga => {
+            const funcao = createAsideElement(vaga)
+    
+            ulSectionAside.append(funcao);
+        });
+    
+        removeButton()
+    }
 }
 
 // Função que remove no botão do aside
@@ -243,6 +247,13 @@ function removeButton (){
 // Função para criar Empty Message
 
 function emptyMessage() {
+    let pAside = document.createElement('p');
+    pAside.setAttribute('id', 'removeCard');
+    pAside.setAttribute('class', 'text-job removerCard');
+    pAside.innerText = 'Você ainda não aplicou para nenhuma vaga'
+
+    return pAside
+
 
 }
 
