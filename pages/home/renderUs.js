@@ -194,6 +194,9 @@ function renderVacancies(arr) {
     const ulSectionAside = document.querySelector('.test');
     ulSectionAside.innerHTML = '';
 
+    const pAside = document.querySelector('#removeCard')
+    pAside.innerHTML = '';
+
     arr.forEach(vaga => {
         const funcao = createAsideElement(vaga)
 
@@ -236,7 +239,7 @@ function removeButton (){
 // Função para criar Empty Message
 
 function emptyMessage() {
-    
+
 }
 
 // Função de Scroll da page
