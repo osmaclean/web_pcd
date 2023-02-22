@@ -99,7 +99,7 @@ section {
     font-family: 'Poppins', sans-serif;
 }
 
-section h1 {
+section h1.vacancy {
     color: var(--color-grey-6);
     margin: 20px 0px;
     font-weight: 900;
@@ -107,14 +107,14 @@ section h1 {
     font-family: 'Poppins', sans-serif;
 }
 
-section #box {
+/* section #box {
     background-color: #dee2e6;
     border-radius: 5px;
     height: 50vh;
     font-family: 'Poppins', sans-serif;
-}
+} */
 
-section div {
+section ul li {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -126,13 +126,17 @@ section div {
     font-family: 'Poppins', sans-serif;
 }
 
-section div h1 {
+section ul li h2 {
     font-size: var(--title-4);
     font-weight: bold;
     color: var(--color-primary-1);
     font-family: 'Poppins', sans-serif;
 }
 
+/* #content {
+    padding: 20px;
+} */
+/* 
 section div div#divloc {
     width: 100%;
     display: flex;
@@ -141,15 +145,27 @@ section div div#divloc {
     font-family: 'Poppins', sans-serif;
 
     
+} */
+
+section ul li p.descriptionCard {
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--text-2);
+    color: var(--color-grey-1);
 }
 
-section div div#divloc h4 {
+section ul li div.divCard {
     font-family: 'Poppins', sans-serif;
     font-size: var(--text-3);
-    margin-right: 25px;
+    display: flex;
+    font-weight: 600;
+    margin: 10px 0px;
+
+    justify-content: space-between;
+
 }
 
-section div div#segundaDiv {
+
+/* section div div#segundaDiv {
     font-family: 'Poppins', sans-serif;
     margin-top: 20px;
     padding: 0;
@@ -160,11 +176,11 @@ section div div#segundaDiv {
     color: var(--color-grey-1);
     font-size: var(--text-3);
     letter-spacing: 0.05rem;
-}
+} */
 
 
-section div button {
-    height: 1.875rem;
+section ul li button.buttonCard {
+    height: 1.975rem;
     width: 100%;
     background-color: var(--color-primary-1);
     border: 0.063rem solid var(--color-primary-1);
@@ -177,6 +193,24 @@ section div button {
     font-family: 'Poppins', sans-serif;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
+}
+
+section ul li span {
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--text-3);
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    border: 1px solid rgb(146, 146, 146);
+    height: 25px;
+    width: 50%;
+    background-color: rgb(146, 146, 146);
+    color: var(--color-grey-6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 section aside {
@@ -190,15 +224,19 @@ section aside {
     text-align: center;
 }
 
-section aside h1 {
+section aside h2 {
     color: var(--color-primary-1);
     font-size: 20px;
 }
 
 
-.text-job {
-
+section aside p.text-job {
+    margin-top: 100px;
     padding-bottom: 30px;
     line-height: 32px;
+    font-weight: 600;
+    color: var(--color-grey-2);
 
 }
+
+
