@@ -169,6 +169,9 @@ function createAsideElement(arr) {
     
         let modos = document.createElement('span');
         modos.setAttribute('class', 'asideSpan');
+
+        let modos_1 = document.createElement('span');
+        modos_1.setAttribute('class', 'asideSpan_1');
     
         let asideButton = document.createElement('button')
         asideButton.setAttribute('class', 'asideButton');
@@ -180,10 +183,11 @@ function createAsideElement(arr) {
         location.innerText = arr.localizacao;
         asideButton.innerText = 'Remover';
         modos.innerText = arr.modo[0]
+        modos_1.innerText = arr.modo[1]
 
        
-        li.append(title, asideCompanyLocation, enterprise, location, asideTypeButton, modos, asideButton)
-
+        li.append(title, asideCompanyLocation, enterprise, location, asideTypeButton, asideButton)
+        asideTypeButton.append(modos, modos_1)
         return li
 }
 

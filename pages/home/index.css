@@ -43,7 +43,7 @@ main {
 }
 
 main h1 {
-    
+
     color: var(--color-grey-6);
     font-size: var(--title-5);
     letter-spacing: 2px;
@@ -56,11 +56,11 @@ main h3 {
     font-size: var(--title-3);
     letter-spacing: 5px;
     line-height: 25px;
-    
+
 }
 
 main p {
-    
+
     color: var(--color-grey-6);
     font-size: var(--text-1);
     line-height: 30px;
@@ -164,6 +164,10 @@ section ul li div.divCard {
 
 }
 
+section ul li div.divModos {
+    display: flex;
+    gap: 15px;
+}
 
 /* section div div#segundaDiv {
     font-family: 'Poppins', sans-serif;
@@ -239,4 +243,12 @@ section aside p.text-job {
 
 }
 
+section aside ul li.aside__li {
+    display: flex;
+}
 
+section aside ul li div.asideTypeButton
+
+section aside ul li h2.nameJob {
+    font-size: 15px;
+}
