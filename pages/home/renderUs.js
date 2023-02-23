@@ -190,8 +190,8 @@ function createAsideElement(arr) {
         asideButton.src = '../../assets/img/sorrindo.png';
 
        
-        li.append(title, asideCompanyLocation, asideTypeButton, asideButton)
-        asideTypeButton.append(modos, modos_1)
+        li.append(title, asideCompanyLocation, asideTypeButton)
+        asideTypeButton.append(modos, modos_1,  asideButton)
         asideCompanyLocation.append(enterprise, location)
         // asideButton.append(img)
 
