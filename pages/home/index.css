@@ -293,6 +293,7 @@ section aside ul li img.asideButton {
         max-width: 1200px;
         margin: 0 auto;
         background-color: #c0eb75;
+        font-family: 'Poppins', sans-serif;
     }
 
     body::-webkit-scrollbar {
@@ -333,7 +334,7 @@ section aside ul li img.asideButton {
         color: var(--color-grey-6);
         font-size: var(--title-1);
         letter-spacing: 5px;
-
+        width: 60%;
         line-height: 40px;
 
     }
@@ -343,6 +344,7 @@ section aside ul li img.asideButton {
         color: var(--color-grey-6);
         font-size: var(--title-4);
         line-height: 30px;
+        width: 50%;
     }
 
     main span {
@@ -380,7 +382,7 @@ section aside ul li img.asideButton {
         padding: 10px;
         gap: 20px;
         font-family: 'Poppins', sans-serif;
-        width: 40%;
+        width: 45%;
     }
 
     section h1.vacancy {
@@ -483,7 +485,7 @@ section aside ul li img.asideButton {
 
     section aside {
         padding: 20px;
-        width: 53%;
+        width: 80%;
         height: 60vh;
         margin-top: 89px;
         border-radius: 0.313rem;
@@ -521,7 +523,7 @@ section aside ul li img.asideButton {
     }
 
     section aside ul li {
-        height: 138px;
+        height: 125px;
         padding: 10px;
         border: 2px solid rgb(197, 197, 197);
         border-radius: 5px;
@@ -532,28 +534,31 @@ section aside ul li img.asideButton {
     }
 
     section aside ul li div.asideTypeButton {
-
+        position: relative;
+        bottom: 10px;
         display: flex;
-        gap: 3px;
-        margin-bottom: 20px;
+        justify-content: space-between;
+        align-content: center;
+        flex-direction: row;
     }
 
     section aside ul li div.asideTypeButton span {
-        font-size: 12px;
-        height: 20px;
+        font-size: 15px;
+        height: 27px;
         width: 40%;
     }
 
     section aside ul li h2.nameJob {
-        font-size: 15px;
+        font-size: var(--title-4);
         display: flex;
+        font-family: 'Poppins', sans-serif;
     }
 
     section aside ul li div.asideCompanyLocation {
         display: flex;
         font-weight: 600;
-        font-size: 12px;
-        justify-content: space-between;
+        font-size: 16px;
+        justify-content: flex-start;
 
     }
 
@@ -562,6 +567,8 @@ section aside ul li img.asideButton {
     }
 
     section aside ul li img.asideButton {
+        position: relative;
+        bottom: 26px;
         margin-top: 10px;
         display: flex;
         justify-content: center;

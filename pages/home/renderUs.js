@@ -4,7 +4,7 @@
 const jobsData = [
     {
         id: 0,
-        titulo: "Web Developer Back-end - SQL",
+        titulo: "Web Developer Back-end",
         empresa: "DNC S/A",
         localizacao: "Fortaleza",
         descricao:
@@ -13,7 +13,7 @@ const jobsData = [
     },
     {
         id: 1,
-        titulo: "Web Developer FullStack Sr.",
+        titulo: "Web Developer FullStack",
         empresa: "Escola DNC",
         localizacao: "São Paulo",
         descricao:
@@ -22,7 +22,7 @@ const jobsData = [
     },
     {
         id: 2,
-        titulo: "Web Developer Front-end Jr. Vue.js",
+        titulo: "Web Developer Front-end",
         empresa: "Tech LTDA",
         localizacao: "Mato Grosso",
         descricao:
