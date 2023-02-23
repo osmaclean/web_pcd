@@ -114,7 +114,7 @@ section h1.vacancy {
     font-family: 'Poppins', sans-serif;
 } */
 
-section ul li {
+section ul li.jobs {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -158,10 +158,13 @@ section ul li div.divCard {
     font-size: var(--text-3);
     display: flex;
     font-weight: 600;
-    margin: 10px 0px;
+    margin: 10px;
+    margin-left: 0;
 
-    justify-content: space-between;
+}
 
+section ul li div.divCard .empresaCard {
+    margin-right: 20px;
 }
 
 section ul li div.divModos {
@@ -226,6 +229,7 @@ section aside {
     display: flex;
     flex-direction: column;
     text-align: center;
+    overflow-y: scroll;
 }
 
 section aside h2 {
@@ -243,17 +247,62 @@ section aside p.text-job {
 
 }
 
-section aside ul li.aside__li {
+section aside ul li {
+    height: 138px;
+    padding: 10px;
+    border: 2px solid rgb(197, 197, 197);
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 100%;
     display: flex;
+    flex-direction: column;
 }
 
-section aside ul li div.asideTypeButton {
+section aside ul li div.asideTypeButton{
 
     display: flex;
-    gap: 10px;
-    width:80%;
+    gap: 3px;
+    margin-bottom: 20px;
+}
+
+section aside ul li div.asideTypeButton span {
+    font-size: 12px;
+    height: 20px;
+    width: 40%;
 }
 
 section aside ul li h2.nameJob {
     font-size: 15px;
+}
+
+section aside ul li div.asideCompanyLocation {
+    display: flex;
+    font-weight: 600;
+    font-size: 12px;
+    justify-content: space-between;
+  
+}
+
+section aside ul li div.asideCompanyLocation .asideCompany {
+    margin-right: 10px;
+}
+
+section aside ul li img.asideButton {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 50px;
+    left: 166px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    z-index: 1;
+
+}
+
+section aside ul li button img.botaoLixeira {
+    width: 30px;
+    height: 30px;
+    z-index: 0;
 }

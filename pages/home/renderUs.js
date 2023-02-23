@@ -4,7 +4,7 @@
 const jobsData = [
     {
         id: 0,
-        titulo: "Desenvolvedor(a) Back-end - Python",
+        titulo: "Web Developer Back-end - SQL",
         empresa: "DNC S/A",
         localizacao: "Fortaleza",
         descricao:
@@ -13,7 +13,7 @@ const jobsData = [
     },
     {
         id: 1,
-        titulo: "Desenvolvedor(a) FullStack - Node.js",
+        titulo: "Web Developer FullStack Sr.",
         empresa: "Escola DNC",
         localizacao: "São Paulo",
         descricao:
@@ -22,7 +22,7 @@ const jobsData = [
     },
     {
         id: 2,
-        titulo: "Desenvolvedor Front-end Jr. - React.js | Tailwind",
+        titulo: "Web Developer Front-end Jr. Vue.js",
         empresa: "Tech LTDA",
         localizacao: "Mato Grosso",
         descricao:
@@ -173,21 +173,28 @@ function createAsideElement(arr) {
         let modos_1 = document.createElement('span');
         modos_1.setAttribute('class', 'asideSpan_1');
     
-        let asideButton = document.createElement('button')
+        let asideButton = document.createElement('img')
         asideButton.setAttribute('class', 'asideButton');
         asideButton.setAttribute('id', arr.id);
+
+        // let img = document.createElement('img');
+        // img.setAttribute('class', 'botaoLixeira');
     
         li.id = arr.id;
         title.innerText = arr.titulo;
         enterprise.innerText = arr.empresa;
         location.innerText = arr.localizacao;
-        asideButton.innerText = 'Remover';
-        modos.innerText = arr.modo[0]
-        modos_1.innerText = arr.modo[1]
+        modos.innerText = arr.modo[0];
+        modos_1.innerText = arr.modo[1];
+        asideButton.innerText = '';
+        asideButton.src = '../../assets/img/sorrindo.png';
 
        
-        li.append(title, asideCompanyLocation, enterprise, location, asideTypeButton, asideButton)
+        li.append(title, asideCompanyLocation, asideTypeButton, asideButton)
         asideTypeButton.append(modos, modos_1)
+        asideCompanyLocation.append(enterprise, location)
+        // asideButton.append(img)
+
         return li
 }
 
@@ -218,8 +225,8 @@ function renderVacancies(arr) {
 // Função que remove no botão do aside
 
 function removeButton (){
-    const buttonCandidatura = document.querySelectorAll('.buttonCard')
-    const buttonsAside = document.querySelectorAll('.asideButton')
+    const buttonCandidatura = document.querySelectorAll('.buttonCard');
+    const buttonsAside = document.querySelectorAll('.asideButton'); 
 
 
     buttonCandidatura.forEach(element => {
