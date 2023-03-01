@@ -32,12 +32,28 @@ const jobsData = [
 ];
 
 const vagasAplicadas = [];
-console.log(vagasAplicadas)
 
 let more = 0;
 
 let ulContainer = document.querySelector("ul")
 
+// Função que vai analisar o localStore
+
+function vacanciesDataAnalysis() {
+    const vacanciesLocalJSON = localStorage.getItem("keyVagasApp");
+
+    if (vacanciesLocalJSON) {
+
+        const vacanciesLocal = JSON.parse(vacanciesLocalJSON);
+
+    
+
+        return renderVacancies(vacanciesLocal)
+
+    }
+
+}
+vacanciesDataAnalysis();
 
 // Função que renderiza os cards das vagas
 
@@ -102,34 +118,41 @@ function addRemoveVagas() {
 
     let cardButton = document.querySelectorAll(".buttonCard");
 
+
+
     cardButton.forEach((botao) => {
 
         botao.addEventListener('click', function (event) {
 
-            const targetEvent = event.target
+            const targetEvent = event.target;
 
             if (targetEvent.innerText === 'Candidatar') {
 
-                targetEvent.innerText = 'Remover Candidatura'
+                targetEvent.innerText = 'Remover Candidatura';
 
                 const finding = jobsData.find((element) => {
 
-                  
-                    return element.id === Number(targetEvent.id)
+
+                    return element.id === Number(targetEvent.id);
 
                 });
 
                 const vagaAplicada = { ...finding, id_new: vagasAplicadas.length + 1 }
+                vagasAplicadas.push(vagaAplicada);
 
-                vagasAplicadas.push(vagaAplicada)
-                renderVacancies(vagasAplicadas)
+                const dataJSON = JSON.stringify(vagasAplicadas);
 
+                localStorage.setItem('keyVagasApp', dataJSON);
+
+                
+               
+                renderVacancies(vagasAplicadas);
                 // renderAside(vacancy);
             } else {
-                targetEvent.innerText = 'Candidatar'
+                targetEvent.innerText = 'Candidatar';
 
                 const finding__remove = vagasAplicadas.find((element) => {
-                   
+
                     return element.id === Number(targetEvent.id);
                 })
 
@@ -137,6 +160,10 @@ function addRemoveVagas() {
 
                 vagasAplicadas.splice(indiceVagas, 1)
                 renderVacancies(vagasAplicadas)
+
+                const dataJSONReturn = JSON.stringify(vagasAplicadas);
+
+                localStorage.setItem('keyVagasApp', dataJSONReturn);
             }
         })
     });
@@ -146,97 +173,101 @@ addRemoveVagas()
 // Função que cria os elementos das vagas no aside
 
 function createAsideElement(arr) {
-   
-        let produtosUlAside = document.querySelector('.test');
-    
-        let li = document.createElement('li');
-        li.classList.add('aside__li');
-    
-        let title = document.createElement('h2');
-        title.setAttribute('class', 'nameJob');
-    
-        let asideCompanyLocation = document.createElement('div');
-        asideCompanyLocation.classList.add('asideCompanyLocation');
-    
-        let enterprise = document.createElement('p')
-        enterprise.setAttribute('class', 'asideCompany');
-    
-        let location = document.createElement('p')
-        location.classList.add('asideLocation') 
-    
-        let asideTypeButton = document.createElement('div');
-        asideTypeButton.classList.add('asideTypeButton');
-    
-        let modos = document.createElement('span');
-        modos.setAttribute('class', 'asideSpan');
 
-        let modos_1 = document.createElement('span');
-        modos_1.setAttribute('class', 'asideSpan_1');
-    
-        let asideButton = document.createElement('img')
-        asideButton.setAttribute('class', 'asideButton');
-        asideButton.setAttribute('id', arr.id);
+    let produtosUlAside = document.querySelector('.test');
 
-        // let img = document.createElement('img');
-        // img.setAttribute('class', 'botaoLixeira');
-    
-        li.id = arr.id;
-        title.innerText = arr.titulo;
-        enterprise.innerText = arr.empresa;
-        location.innerText = arr.localizacao;
-        modos.innerText = arr.modo[0];
-        modos_1.innerText = arr.modo[1];
-        asideButton.innerText = '';
-        asideButton.src = '../../assets/img/sorrindo.png';
+    let li = document.createElement('li');
+    li.classList.add('aside__li');
 
-       
-        li.append(title, asideCompanyLocation, asideTypeButton)
-        asideTypeButton.append(modos, modos_1,  asideButton)
-        asideCompanyLocation.append(enterprise, location)
-        // asideButton.append(img)
+    let title = document.createElement('h2');
+    title.setAttribute('class', 'nameJob');
 
-        return li
+    let asideCompanyLocation = document.createElement('div');
+    asideCompanyLocation.classList.add('asideCompanyLocation');
+
+    let enterprise = document.createElement('p')
+    enterprise.setAttribute('class', 'asideCompany');
+
+    let location = document.createElement('p')
+    location.classList.add('asideLocation')
+
+    let asideTypeButton = document.createElement('div');
+    asideTypeButton.classList.add('asideTypeButton');
+
+    let modos = document.createElement('span');
+    modos.setAttribute('class', 'asideSpan');
+
+    let modos_1 = document.createElement('span');
+    modos_1.setAttribute('class', 'asideSpan_1');
+
+    let asideButton = document.createElement('img')
+    asideButton.setAttribute('class', 'asideButton');
+    asideButton.setAttribute('id', arr.id);
+
+    // let img = document.createElement('img');
+    // img.setAttribute('class', 'botaoLixeira');
+
+    li.id = arr.id;
+    title.innerText = arr.titulo;
+    enterprise.innerText = arr.empresa;
+    location.innerText = arr.localizacao;
+    modos.innerText = arr.modo[0];
+    modos_1.innerText = arr.modo[1];
+    asideButton.innerText = '';
+    asideButton.src = '../../assets/img/sorrindo.png';
+
+
+    li.append(title, asideCompanyLocation, asideTypeButton)
+    asideTypeButton.append(modos, modos_1, asideButton)
+    asideCompanyLocation.append(enterprise, location)
+    // asideButton.append(img)
+
+    return li
 }
 
 // Função que renderiza no Aside
 
 function renderVacancies(arr) {
-    
+
+
+
     const ulSectionAside = document.querySelector('.test');
     ulSectionAside.innerHTML = '';
 
     const funcaoMessage = emptyMessage()
 
-    if (vagasAplicadas.length <= 0){
+    if (vagasAplicadas.length <= 0) {
 
         ulSectionAside.append(funcaoMessage)
 
     } else {
         arr.forEach(vaga => {
             const funcao = createAsideElement(vaga)
-    
+
             ulSectionAside.append(funcao);
         });
-    
+
         removeButton()
     }
 }
 
+
+
 // Função que remove no botão do aside
 
-function removeButton (){
+function removeButton() {
     const buttonCandidatura = document.querySelectorAll('.buttonCard');
-    const buttonsAside = document.querySelectorAll('.asideButton'); 
+    const buttonsAside = document.querySelectorAll('.asideButton');
 
 
     buttonCandidatura.forEach(element => {
         buttonsAside.forEach(button => button.addEventListener('click', (event) => {
-            if(element.id === event.target.id){
+            if (element.id === event.target.id) {
 
                 element.innerText = 'Candidatar'
 
                 const finding__remove = vagasAplicadas.find((vaga) => {
-                   
+
                     return vaga.id === Number(element.id);
                 })
 
