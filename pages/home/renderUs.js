@@ -31,29 +31,11 @@ const jobsData = [
     },
 ];
 
-const vagasAplicadas = [];
+let vagasAplicadas = [];
 
 let more = 0;
 
 let ulContainer = document.querySelector("ul")
-
-// Função que vai analisar o localStore
-
-function vacanciesDataAnalysis() {
-    const vacanciesLocalJSON = localStorage.getItem("keyVagasApp");
-
-    if (vacanciesLocalJSON) {
-
-        const vacanciesLocal = JSON.parse(vacanciesLocalJSON);
-
-    
-
-        return renderVacancies(vacanciesLocal)
-
-    }
-
-}
-vacanciesDataAnalysis();
 
 // Função que renderiza os cards das vagas
 
@@ -117,9 +99,6 @@ renderizaVagas(jobsData)
 function addRemoveVagas() {
 
     let cardButton = document.querySelectorAll(".buttonCard");
-
-
-
     cardButton.forEach((botao) => {
 
         botao.addEventListener('click', function (event) {
@@ -131,10 +110,7 @@ function addRemoveVagas() {
                 targetEvent.innerText = 'Remover Candidatura';
 
                 const finding = jobsData.find((element) => {
-
-
                     return element.id === Number(targetEvent.id);
-
                 });
 
                 const vagaAplicada = { ...finding, id_new: vagasAplicadas.length + 1 }
@@ -144,26 +120,27 @@ function addRemoveVagas() {
 
                 localStorage.setItem('keyVagasApp', dataJSON);
 
-                
-               
                 renderVacancies(vagasAplicadas);
-                // renderAside(vacancy);
+
             } else {
                 targetEvent.innerText = 'Candidatar';
 
                 const finding__remove = vagasAplicadas.find((element) => {
-
                     return element.id === Number(targetEvent.id);
                 })
 
-                const indiceVagas = vagasAplicadas.indexOf(finding__remove)
 
+                const indiceVagas = vagasAplicadas.indexOf(finding__remove)
                 vagasAplicadas.splice(indiceVagas, 1)
+
                 renderVacancies(vagasAplicadas)
 
-                const dataJSONReturn = JSON.stringify(vagasAplicadas);
+                const playOnLocalStorage = JSON.parse(localStorage.getItem('keyVagasApp'));
 
-                localStorage.setItem('keyVagasApp', dataJSONReturn);
+                const updatedLocalStorage = playOnLocalStorage.filter((item) => item.id !== finding__remove.id);
+
+                const dataJSON = JSON.stringify(updatedLocalStorage);
+                localStorage.setItem('keyVagasApp', dataJSON);
             }
         })
     });
@@ -204,9 +181,6 @@ function createAsideElement(arr) {
     asideButton.setAttribute('class', 'asideButton');
     asideButton.setAttribute('id', arr.id);
 
-    // let img = document.createElement('img');
-    // img.setAttribute('class', 'botaoLixeira');
-
     li.id = arr.id;
     title.innerText = arr.titulo;
     enterprise.innerText = arr.empresa;
@@ -220,7 +194,6 @@ function createAsideElement(arr) {
     li.append(title, asideCompanyLocation, asideTypeButton)
     asideTypeButton.append(modos, modos_1, asideButton)
     asideCompanyLocation.append(enterprise, location)
-    // asideButton.append(img)
 
     return li
 }
@@ -229,29 +202,38 @@ function createAsideElement(arr) {
 
 function renderVacancies(arr) {
 
-
-
     const ulSectionAside = document.querySelector('.test');
     ulSectionAside.innerHTML = '';
 
     const funcaoMessage = emptyMessage()
-
     if (vagasAplicadas.length <= 0) {
-
         ulSectionAside.append(funcaoMessage)
-
     } else {
         arr.forEach(vaga => {
             const funcao = createAsideElement(vaga)
-
             ulSectionAside.append(funcao);
         });
-
         removeButton()
     }
 }
 
+// Função que vai analisar o localStore
 
+function vacanciesDataAnalysis() {
+    let buttonApply = Array.from(document.querySelectorAll(".buttonCard"))
+    let jobsSelectedInLS = JSON.parse(localStorage.getItem("keyVagasApp")) || [];
+    vagasAplicadas = [...jobsSelectedInLS];
+
+    if (jobsSelectedInLS.length >= 0) {
+        renderVacancies(jobsSelectedInLS);
+        buttonApply.map(btn => {
+            if (jobsSelectedInLS.find(job => job.id == btn.id)) {
+                btn.innerText = 'Remover Candidatura';
+            }
+        })
+    }
+
+}
 
 // Função que remove no botão do aside
 
@@ -275,6 +257,13 @@ function removeButton() {
 
                 vagasAplicadas.splice(indiceVagas, 1)
                 renderVacancies(vagasAplicadas);
+
+                const playOnLocalStorage = JSON.parse(localStorage.getItem('keyVagasApp'));
+                const updatedLocalStorage = playOnLocalStorage.filter((item) => item.id !== finding__remove.id)
+
+                const dataJSON = JSON.stringify(updatedLocalStorage);
+                localStorage.setItem('keyVagasApp', dataJSON)
+
             }
         }))
     })
@@ -290,20 +279,18 @@ function emptyMessage() {
     pAside.setAttribute('class', 'text-job removerCard');
     pAside.innerText = 'Você ainda não aplicou para nenhuma vaga'
 
-    return pAside
-
-
+    return pAside;
 }
 
 // Função de Scroll da page
 
 function pageScroll() {
-    const main__button = document.querySelector('#espiarBotao')
+    const main__button = document.querySelector('#espiarBotao');
+
     main__button.addEventListener('click', () => {
-
         window.scroll({ top: 500, behavior: "smooth" })
-
-
     })
 }
 pageScroll()
+
+
