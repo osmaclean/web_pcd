@@ -30,8 +30,9 @@ body {
 
 main {
     font-family: 'Poppins', sans-serif;
-    height: 30rem;
+    height: 60vh;
     background-image: url(../../assets/img/bg-mobile.jpg);
+    object-fit: cover;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -44,6 +45,7 @@ main h1 {
     font-size: var(--title-5);
     letter-spacing: 1px;
     margin-bottom: 1rem;
+    width: 95%;
 }
 
 main h3 {
@@ -51,14 +53,14 @@ main h3 {
     font-size: var(--title-2);
     letter-spacing: 2px;
     line-height: 35px;
-    width: 70%;
+    width: 90%;
 }
 
 main p {
     color: var(--color-grey-6);
     font-size: var(--text-1);
     line-height: 30px;
-    width: 70%;
+    width: 90%;
     margin-bottom: 1rem;
 }
 
@@ -66,7 +68,7 @@ main span {
     font-family: 'Poppins', sans-serif;
     color: var(--color-grey-6);
     font-size: var(--text-2);
-    width: 70%;
+    width: 90%;
     margin-bottom: 1rem;
     font-weight: 600;
 }
@@ -235,10 +237,10 @@ section aside ul li {
 }
 
 section aside ul li div.asideTypeButton {
-
     display: flex;
     gap: 3px;
     margin-bottom: 20px;
+    justify-content: space-between;
 }
 
 section aside ul li div.asideTypeButton span {
@@ -257,7 +259,6 @@ section aside ul li div.asideCompanyLocation {
     font-weight: 600;
     font-size: 12px;
     justify-content: space-between;
-
 }
 
 section aside ul li div.asideCompanyLocation .asideCompany {
@@ -300,9 +301,8 @@ section aside ul li img.asideButton {
 
     main {
         font-family: 'Poppins', sans-serif;
-        height: 30rem;
+        height: 60vh;
         background-image: url(../../assets/img/bg-desk.png);
-
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -312,12 +312,9 @@ section aside ul li img.asideButton {
 
 
     main h1 {
-
         color: var(--color-grey-6);
         font-size: var(--title-4);
         letter-spacing: 1px;
-        /* margin-bottom: 0px; */
-
     }
 
     main h3 {
@@ -329,7 +326,6 @@ section aside ul li img.asideButton {
     }
 
     main p {
-
         color: var(--color-grey-6);
         font-size: var(--title-4);
         line-height: 30px;
@@ -357,7 +353,6 @@ section aside ul li img.asideButton {
         font-size: var(--title-5);
         font-weight: 600;
         letter-spacing: 1px;
-
     }
 
     main button:hover {
