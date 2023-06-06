@@ -43,7 +43,6 @@ Modo Mobile 📲
 </div>
 
 ## Parte 2 - Funcionalidade ⚙
-
 Funcionalidade via JavaScript. Utilizando conceitos como DOM, Eventos, Function Expression, Arrow Function, Spread Operator, localStorage, Laços, Métodos e Condicionais.
 
 ![web-min](https://github.com/osmaclean/web_pcd/assets/115199808/bf0121c9-cfe6-41c7-ac81-53f80f14b4fd)
